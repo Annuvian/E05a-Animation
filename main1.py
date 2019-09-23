@@ -7,12 +7,13 @@ python -m arcade.examples.move_mouse
 """
 
 import arcade
-
+# Sets width and height of the game screen.
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
+# Sets the title of the game screen.
 SCREEN_TITLE = "Move Mouse Example"
 
-
+# Defines the Ball object
 class Ball:
     def __init__(self, position_x, position_y, radius, color):
 
@@ -38,6 +39,7 @@ class MyGame(arcade.Window):
         # So we just see our object, not the pointer.
         self.set_mouse_visible(False)
 
+        # Sets the game background
         arcade.set_background_color(arcade.color.ASH_GREY)
 
         # Create our ball

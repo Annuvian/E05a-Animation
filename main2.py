@@ -6,13 +6,15 @@ python -m arcade.examples.move_keyboard
 """
 
 import arcade
-
+# Sets scren width and height
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
+# Sets game title
 SCREEN_TITLE = "Move Keyboard Example"
+# Sets the movement speed of the ball
 MOVEMENT_SPEED = 3
 
-
+# Defines the Ball object
 class Ball:
     def __init__(self, position_x, position_y, change_x, change_y, radius, color):
 
@@ -58,6 +60,7 @@ class MyGame(arcade.Window):
         # So we just see our object, not the pointer.
         self.set_mouse_visible(False)
 
+        # Sets the background color
         arcade.set_background_color(arcade.color.ASH_GREY)
 
         # Create our ball

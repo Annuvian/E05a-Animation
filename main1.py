@@ -5,7 +5,7 @@ handle mouse clicks.
 If Python and Arcade are installed, this example can be run from the command line with:
 python -m arcade.examples.move_mouse
 """
-
+#imports the arcade module
 import arcade
 # Sets width and height of the game screen.
 SCREEN_WIDTH = 640
@@ -18,9 +18,13 @@ class Ball:
     def __init__(self, position_x, position_y, radius, color):
 
         # Take the parameters of the init function above, and create instance variables out of them.
+        # Sets the x position
         self.position_x = position_x
+        # Sets the y position
         self.position_y = position_y
+        # Sets the radius
         self.radius = radius
+        # Sets the color
         self.color = color
 
     def draw(self):
@@ -52,14 +56,18 @@ class MyGame(arcade.Window):
 
     def on_mouse_motion(self, x, y, dx, dy):
         """ Called to update our objects. Happens approximately 60 times per second."""
+        # Moves the ball to the mouse x position
         self.ball.position_x = x
+        # Moves the ball to the mouse y position
         self.ball.position_y = y
 
     def on_mouse_press(self, x, y, button, modifiers):
         """
         Called when the user presses a mouse button.
         """
+        # Displays text when a button is pressed telling which button is clicked.
         print(f"You clicked button number: {button}")
+        # If the left mouse button is clicked, the ball color changes to black
         if button == arcade.MOUSE_BUTTON_LEFT:
             self.ball.color = arcade.color.BLACK
 
@@ -67,10 +75,11 @@ class MyGame(arcade.Window):
         """
         Called when a user releases a mouse button.
         """
+        # If the left mouse button is released, it changes the color of the ball to auburn.
         if button == arcade.MOUSE_BUTTON_LEFT:
             self.ball.color = arcade.color.AUBURN
 
-
+# This is what runs the game, it opens the window and runs the arcade module.
 def main():
     window = MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
     arcade.run()

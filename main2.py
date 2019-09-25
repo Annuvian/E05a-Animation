@@ -19,11 +19,17 @@ class Ball:
     def __init__(self, position_x, position_y, change_x, change_y, radius, color):
 
         # Take the parameters of the init function above, and create instance variables out of them.
+        # Sets the x position
         self.position_x = position_x
+        # Sets the y position
         self.position_y = position_y
+        # Sets the change in x
         self.change_x = change_x
+        # Sets the change in y
         self.change_y = change_y
+        # Sets the radius
         self.radius = radius
+        # Sets the color
         self.color = color
 
     def draw(self):
@@ -32,19 +38,22 @@ class Ball:
 
     def update(self):
         # Move the ball
+        # Sets the new y position equal to the previous value + the change in y
         self.position_y += self.change_y
+        # Sets new x position equal to the previous value + the change in x
         self.position_x += self.change_x
 
         # See if the ball hit the edge of the screen. If so, change direction
+        # Stops the ball from going off the left side of the screen
         if self.position_x < self.radius:
             self.position_x = self.radius
-
+        # Stops the ball from going off the right side of the screen.
         if self.position_x > SCREEN_WIDTH - self.radius:
             self.position_x = SCREEN_WIDTH - self.radius
-
+        # Stops the ball from going off the bottom of the screen.
         if self.position_y < self.radius:
             self.position_y = self.radius
-
+        # Stops the ball from going off the top of the screen.
         if self.position_y > SCREEN_HEIGHT - self.radius:
             self.position_y = SCREEN_HEIGHT - self.radius
 
@@ -76,23 +85,29 @@ class MyGame(arcade.Window):
 
     def on_key_press(self, key, modifiers):
         """ Called whenever the user presses a key. """
+        # ball moves left according to the movement speed when the left arrow key is pressed.
         if key == arcade.key.LEFT:
             self.ball.change_x = -MOVEMENT_SPEED
+        # ball moves right according to the movement speed when the right arrow key is pressed.
         elif key == arcade.key.RIGHT:
             self.ball.change_x = MOVEMENT_SPEED
+        # ball moves up according to the movement speed when the up arrow key is pressed.
         elif key == arcade.key.UP:
             self.ball.change_y = MOVEMENT_SPEED
+        # ball moves down according to the movement speed when the down arrow key is pressed.
         elif key == arcade.key.DOWN:
             self.ball.change_y = -MOVEMENT_SPEED
 
     def on_key_release(self, key, modifiers):
         """ Called whenever a user releases a key. """
+        # ball stops moving when key is released.
         if key == arcade.key.LEFT or key == arcade.key.RIGHT:
             self.ball.change_x = 0
+        # ball stops moving when key is released.
         elif key == arcade.key.UP or key == arcade.key.DOWN:
             self.ball.change_y = 0
 
-
+# Runs the game
 def main():
     window = MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
     arcade.run()
